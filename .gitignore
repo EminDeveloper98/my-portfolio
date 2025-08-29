@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Сборка проекта
+dist/
+
+# Yarn
+.yarn/
+
+# Системные файлы Mac/Windows
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+
+# Кэш браузеров и IDE
+.vscode/
+.idea/
