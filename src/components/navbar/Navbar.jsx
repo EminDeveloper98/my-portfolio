@@ -51,8 +51,8 @@ const Navbar = () => {
 
             <li className="nav-list__item">
               <a
-                href="/Sertificate.pdf"
-                download="Sertificate.pdf"
+                href="/certificate.pdf"
+                download="certificate.pdf"
                 className={normalLink} // или activeLink, если хочешь стиль
               >
                 Сertificate
