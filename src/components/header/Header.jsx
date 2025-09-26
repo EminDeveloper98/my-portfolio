@@ -13,7 +13,7 @@ const Header = () => {
         <div className="header__text">
           <p>with passion for learning and creating.</p>
         </div>
-        <a href="/cv.pdf" className="btn" download>
+        <a href="/my-portfolio/cv.pdf" className="btn" download>
           Download CV
         </a>
       </div>

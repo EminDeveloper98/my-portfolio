@@ -28,7 +28,7 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="nav-list__item">
+            {/* <li className="nav-list__item">
               <NavLink
                 to="/projects"
                 className={({ isActive }) =>
@@ -37,7 +37,7 @@ const Navbar = () => {
               >
                 Projects
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-list__item">
               <NavLink
                 to="/contacts"
@@ -48,20 +48,29 @@ const Navbar = () => {
                 Contacts
               </NavLink>
             </li>
-
             <li className="nav-list__item">
               <a
-                href="/certificate.pdf"
+                href="/my-portfolio/certificate.pdf"
                 download="certificate.pdf"
-                className={normalLink} // или activeLink, если хочешь стиль
+                className={normalLink} // или activeLink
               >
-                Сertificate
+                Certificate
               </a>
             </li>
 
             <li className="nav-list__item">
               <a
-                href="https://github.com/eminkhidirov98"
+                href="https://www.linkedin.com/in/%D1%8D%D0%BC%D0%B8%D0%BD-%D1%85%D0%B8%D0%B4%D0%B8%D1%80%D0%BE%D0%B2-4bb2182a3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={normalLink} // или activeLink, если хочешь стиль
+              >
+                Linkedin
+              </a>
+            </li>
+            <li className="nav-list__item">
+              <a
+                href="https://github.com/EminDeveloper98"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={normalLink} // или activeLink, если хочешь стиль

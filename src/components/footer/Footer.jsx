@@ -33,7 +33,7 @@ const Footer = () => {
             </li>
             <li className="social__item">
               <a
-                href="https://github.com/eminkhidirov98"
+                href="https://github.com/EminDeveloper98"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -60,4 +60,3 @@ const Footer = () => {
 };
 
 export default Footer;
-	
