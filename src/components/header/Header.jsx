@@ -16,53 +16,55 @@ const Header = () => {
 
   const [displayedText, setDisplayedText] = useState('');
   const [phase, setPhase] = useState(0); // 0 = intro, 1 = main
-  const [charIndex, setCharIndex] = useState(0);
   const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [fixedText, setFixedText] = useState(''); // текст, который остаётся
+  const [fixedText, setFixedText] = useState('');
 
   useEffect(() => {
-    let textArray = phase === 0 ? introText : mainText;
-    let currentLine = textArray[lineIndex];
+    const textArray = phase === 0 ? introText : mainText;
+    const currentLine = textArray[lineIndex];
+
     let typingSpeed = isDeleting ? 50 : 100;
+    let timeout = null;
 
-    let timeout;
-
-    if (!isDeleting && charIndex <= currentLine.length) {
-      timeout = setTimeout(() => {
-        setDisplayedText(currentLine.substring(0, charIndex));
-        setCharIndex((prev) => prev + 1);
-      }, typingSpeed);
-    } else if (!isDeleting && charIndex > currentLine.length) {
-      // конец строки
-      if (phase === 0) {
-        if (lineIndex < textArray.length - 1) {
-          setLineIndex(lineIndex + 1);
-          setCharIndex(0);
-        } else {
-          timeout = setTimeout(() => setIsDeleting(true), 1000);
-        }
+    if (!isDeleting) {
+      if (charIndex <= currentLine.length) {
+        timeout = setTimeout(() => {
+          setDisplayedText(currentLine.substring(0, charIndex));
+          setCharIndex((prev) => prev + 1);
+        }, typingSpeed);
       } else {
-        if (lineIndex < textArray.length - 1) {
+        // конец строки
+        if (phase === 0 && lineIndex < textArray.length - 1) {
+          setLineIndex((prev) => prev + 1);
+          setCharIndex(0);
+        } else if (phase === 0) {
+          timeout = setTimeout(() => setIsDeleting(true), 1000);
+        } else if (phase === 1 && lineIndex < textArray.length - 1) {
           setFixedText((prev) => prev + currentLine + '\n');
-          setLineIndex(lineIndex + 1);
+          setLineIndex((prev) => prev + 1);
           setCharIndex(0);
         }
       }
-    } else if (isDeleting && charIndex >= 0) {
-      timeout = setTimeout(() => {
-        setDisplayedText(currentLine.substring(0, charIndex));
-        setCharIndex((prev) => prev - 1);
-      }, typingSpeed / 2);
-    } else if (isDeleting && charIndex < 0) {
-      setIsDeleting(false);
-      setPhase(1);
-      setLineIndex(0);
-      setCharIndex(0);
+    } else {
+      if (charIndex > 0) {
+        timeout = setTimeout(() => {
+          setDisplayedText(currentLine.substring(0, charIndex));
+          setCharIndex((prev) => prev - 1);
+        }, typingSpeed);
+      } else {
+        // конец удаления
+        setIsDeleting(false);
+        setPhase(1);
+        setLineIndex(0);
+        setCharIndex(0);
+        setFixedText('');
+      }
     }
 
     return () => clearTimeout(timeout);
-  }, [charIndex, lineIndex, isDeleting, phase, introText, mainText]);
+  }, [charIndex, lineIndex, isDeleting, phase]);
 
   return (
     <header className="header">

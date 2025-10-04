@@ -1,76 +1,61 @@
 import { FaTelegramPlane, FaWhatsapp, FaPhone } from 'react-icons/fa';
+import './style.css'; // подключаем CSS
 
 const Contacts = () => {
-  const rowStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '30px', // расстояние между контактами
-    marginTop: '30px',
-  };
-
-  const itemStyle = {
-    display: 'flex',
-    flexDirection: 'column', // иконка сверху, текст снизу
-    alignItems: 'center',
-    gap: '8px',
-    textAlign: 'center',
-  };
-
-  const circleStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '50px',
-    height: '50px',
-    borderRadius: '50%',
-    color: 'white',
-    fontSize: '22px',
-  };
-
   return (
-    <main className="section">
-      <div className="container" style={{ textAlign: 'center' }}>
+    <main className="section contacts-section">
+      <div className="container">
         <h1 className="title-1">Contacts</h1>
 
-        <div style={rowStyle}>
-          <div style={itemStyle}>
-            <div style={{ ...circleStyle, backgroundColor: '#0088cc' }}>
+        <div className="contacts-row">
+          <div className="contact-item">
+            <div className="contact-circle telegram">
               <FaTelegramPlane />
             </div>
             <a
               href="https://t.me/EminDeveloper"
               target="_blank"
               rel="noopener noreferrer"
+              className="contact-link"
             >
               @EminDeveloper
             </a>
           </div>
 
-          <div style={itemStyle}>
-            <div style={{ ...circleStyle, backgroundColor: '#25D366' }}>
+          <div className="contact-item">
+            <div className="contact-circle whatsapp">
               <FaWhatsapp />
             </div>
             <a
               href="https://wa.me/994514136969"
               target="_blank"
               rel="noopener noreferrer"
+              className="contact-link"
             >
               +994 51 413 69 69
             </a>
           </div>
 
-          <div style={itemStyle}>
-            <div style={{ ...circleStyle, backgroundColor: '#555' }}>
+          <div className="contact-item">
+            <div className="contact-circle phone">
               <FaPhone />
             </div>
-            <a href="tel:+994514136969">+994 51 413 69 69</a>
+            <a href="tel:+994514136969" className="contact-link">
+              +994 51 413 69 69
+            </a>
           </div>
         </div>
 
-        <div style={{ marginTop: '20px' }}>
+        <div className="email-section">
           <h2 className="title-2">Email</h2>
-          <a href="mailto:eminkhidirov98@gmail.com">eminkhidirov98@gmail.com</a>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=eminkhidirov98@gmail.com&su=Hello%20Emin&body=Hi%20Emin%2C%0A%0A"
+            className="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            eminkhidirov98@gmail.com
+          </a>
         </div>
       </div>
     </main>

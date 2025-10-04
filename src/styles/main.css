@@ -143,6 +143,68 @@ body {
   box-shadow: 0 10px 25px rgba(92, 98, 236, 0.5);
 }
 
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--accent);
+  background-color: transparent;
+  border-radius: 25px;
+  border: 2px solid transparent;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
+  transition: color 0.3s ease;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, #5c62ec, #ff6a00, #5c62ec, #ff6a00);
+  background-size: 300% 300%;
+  animation: gradient-move 3s ease infinite;
+  z-index: -1;
+  filter: blur(10px);
+}
+
+.btn-outline span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-outline:hover span {
+  color: #fff;
+}
+
+.btn-outline:hover {
+  color: #fff;
+}
+
+.btn-outline:active {
+  transform: scale(0.97);
+}
+
+/* Анимация градиента */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Анимация градиента */
 @keyframes gradientShift {
   0% {

@@ -1,7 +1,7 @@
 .nav {
   position: sticky;
   top: 0;
-  padding: 20px 0;
+  padding: 13px 0;
   background-color: var(--nav-bg);
   border-bottom: 1px solid var(--nav-border);
   color: var(--nav-text);
@@ -11,7 +11,7 @@
 
 .nav-row {
   display: flex;
-  justify-content: flex-end; /* ссылки справа */
+  justify-content: flex-end;
   align-items: center;
   column-gap: 30px;
   row-gap: 20px;
@@ -19,14 +19,27 @@
 }
 
 .logo {
-  margin-right: auto; /* логотип слева */
-  color: var(--nav-text);
-  font-size: 24px;
+  margin-right: auto;
+  display: flex;
+  font-size: 28px;
   font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #fff; /* логотип белый */
+  overflow: hidden;
 }
 
-.logo strong {
-  font-weight: 700;
+.logo-letter {
+  display: inline-block;
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: slideIn 0.6s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .nav-list {
@@ -101,7 +114,7 @@
 /* Мобильная адаптация */
 @media (max-width: 768px) {
   .nav-toggle {
-    display: flex; /* показываем гамбургер */
+    display: flex;
   }
 
   .nav-list {
@@ -126,4 +139,3 @@
     font-size: 18px;
   }
 }
-

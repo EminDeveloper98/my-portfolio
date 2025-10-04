@@ -12,11 +12,23 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
+  const logoText = 'My Portfolio';
+
   return (
     <nav className="nav">
       <div className="container nav-row">
+        {/* Логотип с анимацией */}
         <NavLink to="/" className="logo" onClick={closeMenu}>
-          <strong>My</strong> Portfolio
+          {logoText.split('').map((char, index) => (
+            // сохраняем пробел как отдельный символ
+            <span
+              key={index}
+              className="logo-letter"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {char === ' ' ? '\u00A0' : char}
+            </span>
+          ))}
         </NavLink>
 
         <BtnDarkMode />
@@ -41,16 +53,15 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-
-          <li className="nav-list__item">
+          <li>
             <NavLink
               to="/projects"
               className={({ isActive }) => (isActive ? activeLink : normalLink)}
+              onClick={closeMenu}
             >
               Projects
             </NavLink>
           </li>
-
           <li>
             <NavLink
               to="/contacts"
