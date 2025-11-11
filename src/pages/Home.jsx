@@ -153,7 +153,7 @@ const Home = () => {
         <div className={`skills-card ${showSkills ? 'skills-card--show' : ''}`}>
           <p className="skills-title">Skills:</p>
           <p className="skills-list">
-            HTML, CSS, Tailwind CSS, JavaScript, React, Yarn, Vite, Git.
+            Figma,HTML, CSS, Tailwind CSS, JavaScript, React, Yarn, Vite, Git.
           </p>
         </div>
       </div>
